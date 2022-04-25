@@ -16,7 +16,7 @@
         @endif
     </head>
     <body class="min-h-screen">
-        <div id="app" class="bg-black min-h-screen flex flex-col justify-center"></div>
+        <div id="app" class="bg-black min-h-screen flex flex-col justify-center p-20"></div>
         <script src="{{ mix('/js/app.js') }}"></script>
     </body>
 </html>
