@@ -4,8 +4,8 @@ import { createApp } from 'vue'
 import { createRouter, createWebHistory } from 'vue-router'
 
 import App from './App.vue'
-import Intro from './Intro.vue'
-import Subscribe from './Subscribe.vue'
+import Intro from './views/Intro.vue'
+import Subscribe from './views/Subscribe.vue'
 
 const routes = [
     { path: '/', component: Intro },
