@@ -1,8 +1,15 @@
 <template>
-    <h1 class="text-green text-6xl text-left mb-14">Vyberte si newslettre, ktoré chete dostávať</h1>
+    <h1 class="text-green text-6xl text-left mb-14">Vyberte si newslettre, ktoré chcete dostávať</h1>
     <div v-for="(option, index) in options">
         <NewsletterOption :option="option"></NewsletterOption>
     </div>
+    <h2 class="text-green text-6xl text-left mt-14 mb-8">Zadajte vašu e-mailovú adresu</h2>
+    <div class="flex mb-3">
+      <input type="email" name="email" class="appearance-none text-4xl grow p-6 placeholder-gray-500" placeholder="meno@doména.sk" />
+      <button class="bg-green text-gray-500 text-4xl mx-auto py-6 px-16">Prihlásiť</button>
+    </div>
+    <div class="text-gray-300 text-2xl">Odoslaním súhlasíte so <a href="#" class="underline underline-offset-2 hover:no-underline">spracovaním osobných údajov</a>.</div>
+
 </template>
 
 <script setup>
@@ -12,26 +19,26 @@ const options = [
   {
     id: 'newsletter-1',
     title: 'Čo nové v SNG Bratislava?',
-    description: 'Výstavy, programy, novinky, oznamy...',
-    frequency: 'Jedenkrát týždenne'
+    description: 'Výstavy, programy, novinky, oznamy',
+    frequency: '1 x za týždeň'
   },
   {
     id: 'newsletter-2',
     title: 'Web umenia',
     description: 'Online kolekcie, tematické články a voľné diela',
-    frequency: 'Dvakrát mesačne'
+    frequency: '2 x za mesiac'
   },
   {
     id: 'newsletter-3',
     title: 'Edu.SNG',
     description: 'Vzdelávanie – kurzy, programy, školy, workshopy',
-    frequency: 'Dvakrát mesačne'
+    frequency: '2 x za mesiac'
   },
   {
     id: 'newsletter-4',
     title: 'Schaubmarov mlyn v Pezinku',
     description: 'Výstavy a programy v najkrajšom sade',
-    frequency: 'Jedenkrát mesačne'
+    frequency: '1 x za mesiac'
   },
 ]
 </script>
