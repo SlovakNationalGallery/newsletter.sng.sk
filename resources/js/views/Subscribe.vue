@@ -3,8 +3,8 @@
     <div class="text-right">
       <a class="text-green uppercase underline underline-offset-2 text-xl" @click="selectAll">Chcem všetky!</a>
     </div>
-    <div v-for="(option, index) in options">
-        <NewsletterOption :option="option"></NewsletterOption>
+    <div v-for="option in options" :key="option.id">
+        <NewsletterOption :option="option" :checked="selected.includes(option.id)" @checked="selectOption"></NewsletterOption>
     </div>
     <h2 class="text-green text-5xl text-left mt-14 mb-8">Zadajte vašu e-mailovú adresu</h2>
     <div class="flex mb-3">
@@ -12,7 +12,6 @@
       <button class="bg-green text-gray-500 text-3xl mx-auto py-6 px-16">Prihlásiť</button>
     </div>
     <div class="text-gray-300 text-2xl">Odoslaním súhlasíte so <a href="#" class="underline underline-offset-2 hover:no-underline">spracovaním osobných údajov</a>.</div>
-
 </template>
 
 <script setup>
@@ -48,7 +47,15 @@ const options = [
 const selected = ref([])
 
 const selectAll = () => {
-    selected.value = options.map(o => o.id);
-};
+    selected.value = options.map(o => o.id)
+}
+
+const selectOption = (optionId) => {
+  if (selected.value.includes(optionId)) {
+    selected.value = selected.value.filter(i => i !== optionId)
+    return
+  }
+  selected.value.push(optionId)
+}
 
 </script>
