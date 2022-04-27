@@ -1,5 +1,5 @@
 <template>
-    <h1 class="text-green text-9xl text-center">Chcete byť v&nbsp;obraze?</h1>
+    <h1 class="text-green text-8xl text-center">Chcete byť v&nbsp;obraze?</h1>
     <div class="text-gray-50 text-6xl text-center my-20">
       Prihláste sa<br>
       na pravidelný<br>

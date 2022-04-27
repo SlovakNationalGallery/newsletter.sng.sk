@@ -2,9 +2,9 @@
     <div class="flex items-center mb-8">
       <div class="grow">
         <label :for="props.option.id" class="cursor-pointer">
-          <div class="text-5xl text-gray-50">{{ props.option.title }}</div>
-          <div class="text-3xl text-white">{{ props.option.description }}</div>
-          <div class="text-2xl text-gray-200 italic">{{ props.option.frequency }}</div>
+          <div class="text-4xl text-gray-50">{{ props.option.title }}</div>
+          <div class="text-2xl text-white">{{ props.option.description }}</div>
+          <div class="text-xl text-gray-200 italic">{{ props.option.frequency }}</div>
         </label>
       </div>
       <div class="cursor-pointer relative">

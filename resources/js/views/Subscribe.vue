@@ -1,18 +1,22 @@
 <template>
-    <h1 class="text-green text-6xl text-left mb-14">Vyberte si newslettre, ktoré chcete dostávať</h1>
+    <h1 class="text-green text-6xl text-left mb-6">Vyberte si newslettre, ktoré chcete dostávať</h1>
+    <div class="text-right">
+      <a class="text-green uppercase underline underline-offset-2 text-xl" @click="selectAll">Chcem všetky!</a>
+    </div>
     <div v-for="(option, index) in options">
         <NewsletterOption :option="option"></NewsletterOption>
     </div>
-    <h2 class="text-green text-6xl text-left mt-14 mb-8">Zadajte vašu e-mailovú adresu</h2>
+    <h2 class="text-green text-5xl text-left mt-14 mb-8">Zadajte vašu e-mailovú adresu</h2>
     <div class="flex mb-3">
-      <input type="email" name="email" class="appearance-none text-4xl grow p-6 placeholder-gray-500" placeholder="meno@doména.sk" />
-      <button class="bg-green text-gray-500 text-4xl mx-auto py-6 px-16">Prihlásiť</button>
+      <input type="email" name="email" class="appearance-none text-3xl grow p-6 placeholder-gray-500" placeholder="meno@doména.sk" />
+      <button class="bg-green text-gray-500 text-3xl mx-auto py-6 px-16">Prihlásiť</button>
     </div>
     <div class="text-gray-300 text-2xl">Odoslaním súhlasíte so <a href="#" class="underline underline-offset-2 hover:no-underline">spracovaním osobných údajov</a>.</div>
 
 </template>
 
 <script setup>
+import { ref } from 'vue'
 import NewsletterOption from '../components/NewsletterOption.vue'
 
 const options = [
@@ -41,4 +45,10 @@ const options = [
     frequency: '1 x za mesiac'
   },
 ]
+const selected = ref([])
+
+const selectAll = () => {
+    selected.value = options.map(o => o.id);
+};
+
 </script>
