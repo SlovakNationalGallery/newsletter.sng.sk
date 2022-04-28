@@ -8,7 +8,7 @@
         </label>
       </div>
       <div class="cursor-pointer relative">
-        <input :id="props.option.id" :checked="props.checked" @input="emit('checked', props.option.id)" :value="props.option.id" type="checkbox" class="appearance-none w-14 h-14 bg-white border-[6px] border-gray-100 checked:bg-green checked:border-green" />
+        <input :id="props.option.id" :checked="props.checked" @input="emit('checked', props.option.id)" :value="props.option.id" type="checkbox" class="appearance-none rounded-none w-14 h-14 bg-white border-[6px] border-gray-100 checked:bg-green checked:border-green" />
         <svg class="absolute left-2 top-3 stroke-[7px] pointer-events-none"
           :class="{
           'stroke-gray-500': props.checked,

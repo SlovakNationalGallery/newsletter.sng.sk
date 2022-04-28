@@ -8,7 +8,7 @@
     </div>
     <h2 class="text-green text-5xl text-left mt-14 mb-8">Zadajte vašu e-mailovú adresu</h2>
     <div class="flex mb-3">
-      <input type="email" name="email" class="appearance-none text-3xl grow p-6 placeholder-gray-500" placeholder="meno@doména.sk" />
+      <input type="email" name="email" class="appearance-none rounded-none text-3xl grow p-6 placeholder-gray-500" placeholder="meno@doména.sk" />
       <button @click="submit" class="bg-green text-gray-500 text-3xl mx-auto py-6 px-16">Prihlásiť</button>
     </div>
     <div class="text-gray-300 text-2xl">Odoslaním súhlasíte so <a href="#" class="underline underline-offset-2 hover:no-underline">spracovaním osobných údajov</a>.</div>
