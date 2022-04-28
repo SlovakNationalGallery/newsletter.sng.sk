@@ -40,14 +40,14 @@
                 </li>
                 <li>
                   objednávok a kúpy na
-                  <a class="underline underline-offset-2" href="http://www.sng.sk/">
+                  <a class="underline underline-offset-2 pointer-events-none" href="http://www.sng.sk/">
                     www.sng.sk
                   </a>
                   ;
                 </li>
                 <li>
                   objednávok reprodukcií na
-                  <a class="underline underline-offset-2" href="http://www.webumenia.sk/">
+                  <a class="underline underline-offset-2 pointer-events-none" href="http://www.webumenia.sk/">
                     www.webumenia.sk
                   </a>
                   ;
@@ -70,7 +70,7 @@
               </p>
               <p>
                 Súhlas je možné kedykoľvek písomne odvolať na adrese prevádzkovateľa alebo zaslaním e-mailu na e-mailovú adresu
-                <a class="underline underline-offset-2" href="mailto:gdpr@sng.sk">
+                <a class="underline underline-offset-2 pointer-events-none" href="mailto:gdpr@sng.sk">
                   gdpr@sng.sk
                 </a>
                 . Zasielanie marketingovej komunikácie o novinkách a aktuálnych ponukách programu môžete odvolať v každom e-maili kliknutím na link ,,odhlásiť sa z odberu".
@@ -80,7 +80,7 @@
               </p>
               <p>
                 Prevádzkovateľ má určenú zodpovednú osobu za ochranu osobných údajov, ktorú môže dotknutá osoba kontaktovať v súvislosti so všetkými otázkami týkajúcimi sa spracúvania jej osobných údajov a uplatňovania svojich práv podľa nariadenia GDPR; kontaktné údaje na zodpovednú osobu prevádzkovateľa: e-mail:
-                <a class="underline underline-offset-2" href="mailto:zodpovednaosobagdpr@sng.sk">
+                <a class="underline underline-offset-2 pointer-events-none" href="mailto:zodpovednaosobagdpr@sng.sk">
                   zodpovednaosobagdpr@sng.sk
                 </a>
                  alebo písomne na adresu prevádzkovateľa s označením „zodpovedná osoba GDPR".
@@ -128,11 +128,11 @@
               </p>
               <p>
                 Keď využívate naše služby, získavame aj údaje o tom, ako ich využívate. Sú to informácie týkajúce sa vašich interakcií s našimi službami a stránkami
-                <a class="underline underline-offset-2" href="http://www.sng.sk/">
+                <a class="underline underline-offset-2 pointer-events-none" href="http://www.sng.sk/">
                   www.sng.sk
                 </a>
                 ,
-                <a class="underline underline-offset-2" href="http://www.webumenia.sk/">
+                <a class="underline underline-offset-2 pointer-events-none" href="http://www.webumenia.sk/">
                   www.webumenia.sk
                 </a>
                  a rezervacie.sng.sk.
@@ -213,11 +213,11 @@
               </p>
               <p>
                   Google Analytics-Google Ireland Limited, Gordon House, Barrow Street, Dublin 4, Írsko. Bližšie informácie o ochrane súkromia
-                <a class="underline underline-offset-2" href="https://support.google.com/analytics/topic/2919631?hl=sk&amp;ref_topic=1008008">
+                <a class="underline underline-offset-2 pointer-events-none" href="https://support.google.com/analytics/topic/2919631?hl=sk&amp;ref_topic=1008008">
                   nájdete tu
                 </a>
                 , pričom na odmietnutie cookies si môžete inštalovať softvérový doplnok
-                <a class="underline underline-offset-2" href="https://tools.google.com/dlpage/gaoptout">
+                <a class="underline underline-offset-2 pointer-events-none" href="https://tools.google.com/dlpage/gaoptout">
                   dostupný tu
                 </a>
                 .
@@ -296,7 +296,7 @@
                      (Google analytics) -
                   </em>
                   Gordon House, Barrow Street, Dublin 4, Írsko.
-                  <a class="underline underline-offset-2" href="http://cloud.google.com/security/gdpr">
+                  <a class="underline underline-offset-2 pointer-events-none" href="http://cloud.google.com/security/gdpr">
                     Viac...
                   </a>
                 </li>
@@ -304,7 +304,7 @@
                     MailChimp / The Rocket Science Group LLC
                      (zasielanie newslettrov) -
                   675 Ponce de Leon Ave NE, Atlanta, GA 30308 USA.
-                  <a class="underline underline-offset-2" href="https://mailchimp.com/legal/privacy/">
+                  <a class="underline underline-offset-2 pointer-events-none" href="https://mailchimp.com/legal/privacy/">
                     Viac...
                   </a>
                 </li>
@@ -403,7 +403,7 @@
               </p>
               <p>
                 V prípade ak máte akékoľvek otázky k tomuto dokumentu alebo použitiu svojich osobných údajov, alebo si chcete uplatniť svoje práva popísané v tomto dokumente, môžete nás kontaktovať e-mailom na adrese
-                <a class="underline underline-offset-2" href="mailto:gdpr@sng.sk">
+                <a class="underline underline-offset-2 pointer-events-none" href="mailto:gdpr@sng.sk">
                   gdpr@sng.sk
                 </a>
                  alebo písomne na adrese našej inštitúcie.
