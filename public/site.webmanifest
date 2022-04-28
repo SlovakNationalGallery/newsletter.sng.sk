@@ -1,7 +1,7 @@
 {
     "name": "SNG Newsletter",
     "short_name": "SNG Newsletter",
-    "theme_color": "#000000",
-    "background_color": "#000000",
+    "theme_color": "#242424",
+    "background_color": "#242424",
     "display": "standalone"
 }
