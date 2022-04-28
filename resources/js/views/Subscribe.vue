@@ -11,13 +11,15 @@
       <input type="email" name="email" class="appearance-none rounded-none text-3xl grow p-6 placeholder-gray-500" placeholder="meno@doména.sk" />
       <button @click="submit" class="bg-green text-gray-500 text-3xl mx-auto py-6 px-16">Prihlásiť</button>
     </div>
-    <div class="text-gray-300 text-2xl">Odoslaním súhlasíte so <a href="#" class="underline underline-offset-2 hover:no-underline">spracovaním osobných údajov</a>.</div>
+    <div class="text-gray-300 text-2xl">Odoslaním súhlasíte so <a @click="toggleModal" class="underline underline-offset-2 hover:no-underline">spracovaním osobných údajov</a>.</div>
+    <GdprModal @close="toggleModal" :visible="modalActive"></GdprModal>
 </template>
 
 <script setup>
 import { ref } from 'vue'
 import { useRouter } from 'vue-router'
 import NewsletterOption from '../components/NewsletterOption.vue'
+import GdprModal from '../components/GdprModal.vue'
 
 const router = useRouter()
 const options = [
@@ -47,6 +49,7 @@ const options = [
   },
 ]
 const selected = ref([])
+const modalActive = ref(true)
 
 const selectAll = () => {
     selected.value = options.map(o => o.id)
@@ -63,6 +66,10 @@ const selectOption = (optionId) => {
 const submit = () => {
   console.log(selected)
   router.push('/success')
+}
+
+const toggleModal = () => {
+  modalActive.value = !modalActive.value;
 }
 
 
