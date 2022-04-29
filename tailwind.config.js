@@ -5,7 +5,21 @@ module.exports = {
     "./resources/**/*.vue",
   ],
   theme: {
-    extend: {},
+    extend: {
+      animation: {
+        pulse: 'pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+      },
+      keyframes: {
+        pulse: {
+          '0%, 100%': {
+            opacity: 0.9,
+          },
+          '50%': {
+            opacity: 0.2,
+          },
+        },
+      },
+    },
     colors: {
       black: '#000',
       white: '#fff',

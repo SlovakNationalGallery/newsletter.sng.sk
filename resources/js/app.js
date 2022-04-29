@@ -23,3 +23,14 @@ const app = createApp(App)
 app.use(router)
 app.mount('#app')
 
+
+// redirect to intro when idle 3 min
+let timeout
+function refresh(){
+  clearTimeout(timeout)
+  timeout = setTimeout(() => {
+    router.push('/')
+  }, 3 * 60 * 1000)
+}
+refresh()
+document.addEventListener('click', refresh)
