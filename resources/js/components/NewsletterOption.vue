@@ -1,5 +1,5 @@
 <template>
-    <div class="flex items-center mb-8">
+    <div class="flex items-center">
       <div class="grow">
         <label :for="props.option.id" class="cursor-pointer">
           <div class="text-4xl text-gray-50">{{ props.option.title }}</div>

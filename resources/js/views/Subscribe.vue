@@ -3,8 +3,14 @@
     <div class="text-right">
       <a class="text-green uppercase underline underline-offset-2 text-xl" @click="selectAll">Chcem všetky!</a>
     </div>
-    <div v-for="option in options" :key="option.id">
+    <div v-for="option in options" :key="option.id" class="mb-8">
         <NewsletterOption :option="option" :checked="selected.includes(option.id)" @checked="selectOption"></NewsletterOption>
+        <div v-if="option.id == 'newsletter-3'" class="bg-gray-400 text-white py-4 px-6 text-xl mt-2.5" v-show="selected.includes('newsletter-3')">
+          <div class="uppercase mb-4">Chcem dostávať newslettre:</div>
+          <div class="flex">
+            <EduOption v-for="edu_option in edu_options" :key="edu_option.id" :option="edu_option" :checked="selected.includes(edu_option.id)" @checked="selectOption"></EduOption>
+          </div>
+        </div>
     </div>
     <h2 class="text-green text-5xl text-left mt-14 mb-8">Zadajte vašu e-mailovú adresu</h2>
     <div class="flex mb-3">
@@ -19,6 +25,7 @@
 import { ref } from 'vue'
 import { useRouter } from 'vue-router'
 import NewsletterOption from '../components/NewsletterOption.vue'
+import EduOption from '../components/EduOption.vue'
 import GdprModal from '../components/GdprModal.vue'
 
 const router = useRouter()
@@ -48,6 +55,22 @@ const options = [
     frequency: '1 x za mesiac'
   },
 ]
+
+const edu_options = [
+  {
+    id: 'newsletter-rodina',
+    title: 'Rodina',
+  },
+  {
+    id: 'newsletter-dospely',
+    title: 'Dospelý',
+  },
+  {
+    id: 'newsletter-skola',
+    title: 'Škola',
+  },
+]
+
 const selected = ref([])
 const modalActive = ref(false)
 
