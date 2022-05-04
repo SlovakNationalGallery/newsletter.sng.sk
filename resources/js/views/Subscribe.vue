@@ -75,7 +75,7 @@ const selected = ref([])
 const modalActive = ref(false)
 
 const selectAll = () => {
-    selected.value = options.map(o => o.id)
+    selected.value = [...options.map(o => o.id), ...edu_options.map(o => o.id)]
 }
 
 const selectOption = (optionId) => {
