@@ -24,7 +24,10 @@
     <h2 class="text-green text-4xl text-left mt-2 mb-6">Zadajte vašu e-mailovú adresu</h2>
     <div class="flex mb-3">
       <input type="email" name="email" autocomplete="off" class="appearance-none rounded-none text-2xl grow p-6 placeholder-gray-500" placeholder="meno@doména.sk" v-model="email" />
-      <button @click="submit" class="bg-green text-gray-500 text-2xl mx-auto py-6 px-16">Prihlásiť</button>
+      <button @click="submit" :disabled="loading" class="bg-green text-gray-500 text-2xl mx-auto py-6 px-16 w-72">
+        <span v-if="loading">Odosielam...</span>
+        <span v-else>Prihlásiť</span>
+      </button>
     </div>
     <div class="text-gray-300 text-2xl">Odoslaním súhlasíte so <a @click="toggleModal" class="underline underline-offset-2 hover:no-underline">spracovaním osobných údajov</a>.</div>
     <GdprModal @close="toggleModal" :visible="modalActive"></GdprModal>
@@ -84,6 +87,7 @@ const selected = ref([])
 const email = ref(null)
 const modalActive = ref(false)
 const error = ref("");
+const loading = ref(false);
 
 const selectAll = () => {
     selected.value = [...options.map(o => o.id), ...edu_options.map(o => o.id)]
@@ -118,7 +122,17 @@ const isEmail = (value) => {
 
 const submit = () => {
   if (validateInput()) {
-    router.push('/success')
+    loading.value = true
+    axios.post('/api/subscribe', selected)
+      .then((res) => {
+          router.push('/success')
+      })
+      .catch((err) => {
+          error.value = 'nastala chyba';
+          console.log(err)
+      }).finally(() => {
+          loading.value = false
+      })
   }
 }
 

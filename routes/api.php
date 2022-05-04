@@ -14,6 +14,8 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
+Route::post('/subscribe', function () {
+    sleep(1);
+    // return response()->json('Whoops, looks like something went wrong', 500);
+    return response()->json(['success' => true]);
 });
