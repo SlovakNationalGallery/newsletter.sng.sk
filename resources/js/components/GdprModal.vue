@@ -7,7 +7,7 @@
             class="bg-black opacity-70 absolute inset-0 cursor-zoom-out"
             @click="emit('close')"
         />
-        <div class="absolute bg-white w-full bg-white p-20 h-[900px] inset-x-0 bottom-0">
+        <div class="absolute bg-white w-full bg-white p-14 h-[850px] inset-x-0 bottom-0">
             <div class="flex justify-between">
               <h3 class="text-4xl mb-4">Informácia pre dotknuté osoby GDPR</h3>
               <svg @click="emit('close')" class="w-7 h-8 stroke-gray-500" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
