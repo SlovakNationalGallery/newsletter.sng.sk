@@ -1,4 +1,13 @@
 <template>
+    <div class="bg-red fixed inset-x-0 top-0 py-5 uppercase text-center text-2xl flex justify-center items-center gap-x-5" v-show="error">
+      <svg width="34" height="30" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M14.435 2.79 1.73 24a3 3 0 0 0 2.565 4.5h25.41A3 3 0 0 0 32.27 24L19.565 2.79a3.001 3.001 0 0 0-5.13 0v0ZM17 10.5v6M17 22.5h.014" stroke="#000" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+      {{ error }}
+      <svg width="34" height="30" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M14.435 2.79 1.73 24a3 3 0 0 0 2.565 4.5h25.41A3 3 0 0 0 32.27 24L19.565 2.79a3.001 3.001 0 0 0-5.13 0v0ZM17 10.5v6M17 22.5h.014" stroke="#000" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+    </div>
     <h1 class="text-green text-6xl text-left mb-6">Vyberte si newslettre, ktoré chcete dostávať</h1>
     <div class="text-right">
       <a class="text-green uppercase underline underline-offset-2 text-xl" @click="selectAll">Chcem všetky!</a>
@@ -14,7 +23,7 @@
     </div>
     <h2 class="text-green text-5xl text-left mt-14 mb-8">Zadajte vašu e-mailovú adresu</h2>
     <div class="flex mb-3">
-      <input type="email" name="email" class="appearance-none rounded-none text-3xl grow p-6 placeholder-gray-500" placeholder="meno@doména.sk" />
+      <input type="email" name="email" autocomplete="off" class="appearance-none rounded-none text-3xl grow p-6 placeholder-gray-500" placeholder="meno@doména.sk" v-model="email" />
       <button @click="submit" class="bg-green text-gray-500 text-3xl mx-auto py-6 px-16">Prihlásiť</button>
     </div>
     <div class="text-gray-300 text-2xl">Odoslaním súhlasíte so <a @click="toggleModal" class="underline underline-offset-2 hover:no-underline">spracovaním osobných údajov</a>.</div>
@@ -72,7 +81,9 @@ const edu_options = [
 ]
 
 const selected = ref([])
+const email = ref(null)
 const modalActive = ref(false)
+const error = ref("");
 
 const selectAll = () => {
     selected.value = [...options.map(o => o.id), ...edu_options.map(o => o.id)]
@@ -86,9 +97,29 @@ const selectOption = (optionId) => {
   selected.value.push(optionId)
 }
 
+const validateInput = () => {
+  error.value = (!selected.value.length) ? "Vyberte si aspoň jeden z newslettrov v zozname" : "";
+
+  if (error.value  === "") {
+    error.value = (email.value === null || email.value === "") ? "Zadajte e-mailovú adresu" : "";
+  }
+
+  if (error.value  === "") {
+    error.value = (isEmail(email.value)) ? "Zadajte platnú e-mailovú adresu" : "";
+  }
+
+  return (error.value === "")
+}
+
+const isEmail = (value) => {
+  let re = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+  return !re.test(value);
+}
+
 const submit = () => {
-  console.log(selected)
-  router.push('/success')
+  if (validateInput()) {
+    router.push('/success')
+  }
 }
 
 const toggleModal = () => {
