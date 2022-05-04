@@ -24,13 +24,13 @@ app.use(router)
 app.mount('#app')
 
 
-// redirect to intro when idle 3 min
+// redirect to intro when idle 1 min
 let timeout
 function refresh(){
   clearTimeout(timeout)
   timeout = setTimeout(() => {
     router.push('/')
-  }, 3 * 60 * 1000)
+  }, 1 * 60 * 1000)
 }
 refresh()
 document.addEventListener('click', refresh)
