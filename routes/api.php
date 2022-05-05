@@ -2,6 +2,8 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Validator;
+use Spatie\Newsletter\NewsletterFacade as Newsletter;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,8 +16,41 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::post('/subscribe', function () {
-    sleep(1);
-    // return response()->json('Whoops, looks like something went wrong', 500);
+Route::post('/subscribe', function (Request $request) {
+
+    $validator = Validator::make($request->all(), [
+        'email' => 'required|email',
+        'selected' => 'required|array',
+        'selected_interests' => 'array',
+    ]);
+
+    if ($validator->fails()) {
+        return response()->json(['success' => false, 'error_message' => $validator->errors()->first()], 422);
+    }
+
+    $validated = $validator->validated();
+
+    foreach ($validated['selected'] as $list) {
+        if (config()->has('newsletter.lists.' . $list)) {
+
+            $options = [];
+
+            if ($list == 'edu-newsletter' && !empty($validated['selected_interests'])) {
+                $options['interests'] = collect($validated['selected_interests'])->mapWithKeys(function ($item, $key) use ($list) {
+                    if (config()->has('newsletter.lists.' . $list . '.interests.' . $item)) {
+                        return [config('newsletter.lists.' . $list . '.interests.' . $item) => true];
+                    }
+                })->all();
+            }
+
+            Newsletter::subscribePending($validated['email'], [], $list, $options);
+            Newsletter::setMarketingPermission($validated['email'], 'default', true, $list);
+
+            if (!Newsletter::lastActionSucceeded()) {
+                return response()->json(['success' => false, 'error_message' => Newsletter::getLastError()], 500);
+            }
+        }
+    }
+
     return response()->json(['success' => true]);
 });
