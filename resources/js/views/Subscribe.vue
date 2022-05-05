@@ -14,10 +14,10 @@
     </div>
     <div v-for="option in options" :key="option.id" class="mb-8">
         <NewsletterOption :option="option" :checked="selected.includes(option.id)" @checked="selectOption"></NewsletterOption>
-        <div v-if="option.id == 'newsletter-3'" class="bg-gray-400 text-white py-4 px-6 text-xl mt-2.5" v-show="selected.includes('newsletter-3')">
+        <div v-if="option.id == 'edu-newsletter'" class="bg-gray-400 text-white py-4 px-6 text-xl mt-2.5" v-show="selected.includes('edu-newsletter')">
           <div class="uppercase mb-4">Chcem dostávať newslettre:</div>
           <div class="flex">
-            <EduOption v-for="edu_option in edu_options" :key="edu_option.id" :option="edu_option" :checked="selected.includes(edu_option.id)" @checked="selectOption"></EduOption>
+            <EduOption v-for="edu_interest in edu_interests" :key="edu_interest.id" :option="edu_interest" :checked="selected_interests.includes(edu_interest.id)" @checked="selectInterest"></EduOption>
           </div>
         </div>
     </div>
@@ -43,54 +43,56 @@ import GdprModal from '../components/GdprModal.vue'
 const router = useRouter()
 const options = [
   {
-    id: 'newsletter-1',
+    id: 'sng-newsletter',
     title: 'Čo nové v SNG Bratislava?',
     description: 'Výstavy, programy, novinky, oznamy',
     frequency: '1 x za týždeň'
   },
   {
-    id: 'newsletter-2',
+    id: 'webumenia-newsletter',
     title: 'Web umenia',
     description: 'Online kolekcie, tematické články a voľné diela',
     frequency: '2 x za mesiac'
   },
   {
-    id: 'newsletter-3',
+    id: 'edu-newsletter',
     title: 'Edu.SNG',
     description: 'Vzdelávanie – kurzy, programy, školy, workshopy',
     frequency: '2 x za mesiac'
   },
   {
-    id: 'newsletter-4',
+    id: 'schaubmarov-mlyn-newsletter',
     title: 'Schaubmarov mlyn v Pezinku',
     description: 'Výstavy a programy v najkrajšom sade',
     frequency: '1 x za mesiac'
   },
 ]
 
-const edu_options = [
+const edu_interests = [
   {
-    id: 'newsletter-rodina',
+    id: 'rodinne',
     title: 'Rodina',
   },
   {
-    id: 'newsletter-dospely',
+    id: 'pre-dospelych',
     title: 'Dospelý',
   },
   {
-    id: 'newsletter-skola',
+    id: 'skolske',
     title: 'Škola',
   },
 ]
 
 const selected = ref([])
+const selected_interests = ref([])
 const email = ref(null)
 const modalActive = ref(false)
 const error = ref("");
 const loading = ref(false);
 
 const selectAll = () => {
-    selected.value = [...options.map(o => o.id), ...edu_options.map(o => o.id)]
+    selected.value = options.map(o => o.id)
+    selected_interests.value = edu_interests.map(i => i.id)
 }
 
 const selectOption = (optionId) => {
@@ -99,6 +101,14 @@ const selectOption = (optionId) => {
     return
   }
   selected.value.push(optionId)
+}
+
+const selectInterest = (interestId) => {
+  if (selected_interests.value.includes(interestId)) {
+    selected_interests.value = selected_interests.value.filter(i => i !== interestId)
+    return
+  }
+  selected_interests.value.push(interestId)
 }
 
 const validateInput = () => {
@@ -123,15 +133,23 @@ const isEmail = (value) => {
 const submit = () => {
   if (validateInput()) {
     loading.value = true
-    axios.post('/api/subscribe', selected)
+    axios.post('/api/subscribe', {
+        'email': email.value,
+        'selected': selected.value,
+        'selected_interests': selected_interests.value
+      })
       .then((res) => {
-          router.push('/success')
+        router.push('/success')
       })
       .catch((err) => {
+        if (err.response && err.response.data.error_message) {
+          error.value = err.response.data.error_message;
+        } else {
           error.value = 'nastala chyba';
-          console.log(err)
+        }
+        console.log(err)
       }).finally(() => {
-          loading.value = false
+        loading.value = false
       })
   }
 }
