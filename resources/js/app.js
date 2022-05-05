@@ -29,7 +29,9 @@ let timeout
 function refresh(){
   clearTimeout(timeout)
   timeout = setTimeout(() => {
-    router.push('/')
+    if (window.location.pathname !== '/') {
+      window.location = window.location.origin + '?eraseCache=true'
+    }
   }, 1 * 60 * 1000)
 }
 refresh()
