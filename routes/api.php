@@ -47,7 +47,6 @@ Route::post('/subscribe', function (Request $request) {
             Newsletter::setMarketingPermission($validated['email'], 'default', true, $list);
 
             if (!Newsletter::lastActionSucceeded()) {
-                $this->addError('subscription', Newsletter::getLastError());
                 return response()->json(['success' => false, 'error_message' => Newsletter::getLastError()], 500);
             }
         }
