@@ -43,7 +43,7 @@ Route::post('/subscribe', function (Request $request) {
                 })->all();
             }
 
-            Newsletter::subscribe($validated['email'], [], $list, $options);
+            Newsletter::subscribePending($validated['email'], [], $list, $options);
             Newsletter::setMarketingPermission($validated['email'], 'default', true, $list);
 
             if (!Newsletter::lastActionSucceeded()) {
